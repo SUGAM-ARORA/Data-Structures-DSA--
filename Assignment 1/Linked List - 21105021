@@ -1,0 +1,92 @@
+// SUGAM ARORA
+// ECE
+// 21105021
+// DATA STRUCTURES 
+// ASSIGNMENT 1
+// LINKED LIST (FAMILY NAMES)
+#include <iostream>
+using namespace std;
+
+
+class Node{
+    public:
+    string name;
+    int age;
+    Node*next;
+    Node*prev;
+    Node(string name,int age)
+	{
+        this->name=name;
+        this->age=age;
+        next=NULL;
+        prev=NULL;
+    }
+};
+
+void append(Node* &head,string name,int age){
+    Node*temp=head;
+    Node*new_node=new Node(name,age);
+    if(temp==NULL){
+        head=new_node;
+    }
+    else
+	{
+        while(temp->next!=NULL){temp=temp->next;}
+        temp->next=new_node;
+        new_node->prev=temp;
+    }
+}
+
+void insert_at_head(Node*&head,string name,int age){
+    Node*new_node=new Node(name,age);
+    new_node->next=head;
+    head->prev=new_node;
+    head=new_node;
+}
+void display_from_start(Node*head){
+    Node*temp=head;
+    while(temp!=NULL){cout<<"[Name:"<<temp->name<<" Age:"<<temp->age<<"]"<<"\n";temp=temp->next;}
+    cout<<endl;
+}
+void display_from_end(Node*head){
+    Node*temp=head;
+    while(temp->next!=NULL){temp=temp->next;}
+    while(temp!=NULL){cout<<"[Name:"<<temp->name<<" Age:"<<temp->age<<"]"<<"";temp=temp->prev;}
+    cout<<endl;
+}
+void delete_ind(Node*&head,int i){
+    if(i==0){
+        Node*temp=head;
+        head=temp->next;
+        head->prev=NULL;
+        delete temp;
+    }
+    else{
+        Node*temp=head;
+        for(int j=0;j<i;j++){temp=temp->next;}
+        temp->prev->next=temp->next;
+        temp->next->prev=temp->prev;
+        delete temp;
+    }
+}
+void pop(Node*&head){
+    Node*temp=head;
+    while(temp->next!=NULL){temp=temp->next;}
+    temp->prev->next=NULL;
+    delete temp;
+}
+
+int main()
+{
+    Node*head=NULL;
+    append(head,"OP ARORA",78);
+    append(head,"BIMLA ARORA",75);
+    append(head,"VIPAN ARORA",46);
+    append(head,"SONIA ARORA",43);
+    append(head,"SUGAM ARORA",20);
+    append(head,"OJAS ARORA",17);
+    cout<<endl;
+    cout<<"Doubly Linked list with my family members as elements is given   :"<<endl;
+    cout<<endl;
+    display_from_start(head);
+}
