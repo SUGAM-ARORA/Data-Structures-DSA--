@@ -1,0 +1,67 @@
+// SUGAM ARORA
+// ECE
+// 21105021
+// DATA STRUCTURES 
+// ASSIGNMENT 2
+// CIRCULAR LINKED LIST 
+
+
+[1]   
+
+//Basic circular linked list
+
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node*next;
+    Node(int data){
+        this->data=data;
+        next=NULL;
+    }
+};
+
+//Insert a node at end on linked list
+
+void append(Node*&head,int data){
+    Node*temp=head;
+    Node*new_node=new Node(data);
+    if(temp==NULL){head=new_node;new_node->next=head;return;}
+    while(temp->next!=head){temp=temp->next;}   //This condition establishes that the traversing element(temp) has reached the first element
+    temp->next=new_node;
+    new_node->next=head;
+}
+
+//Print elements of linked list from head to the last node.
+
+void pfun(Node*&head){
+    Node*temp=head;
+    do{cout<<temp->data<<"->";temp=temp->next;}
+    while(temp!=head);
+}
+
+int main(){
+    Node*head=NULL;
+    append(head,1);
+    append(head,2);
+    append(head,3);
+    pfun(head);
+}
+/*
+Here Line 31 i.e. while(temp->next!=head){temp=temp->next;}   establishes that the traversing element/variable has reached the first element.
+We Know that in circular linked list last node of linked list points to head of that linked list, hence we can check if any node points to head of linked list then that node is the end of circular linked list.
+*/
+
+
+[2]
+
+There are numerous applications of circular link list
+a) Ludo game : it has to come back give turn to first player after 4th player 
+b) Snake game : The circular linked list stores the x,y position of each point in the snake's body.The head of the list is the snake's head.The tail is its tail.And the really nice property is that as you advance the head to a new position, the list wraps around because it is circular. This erases the tail, and leaves all other body parts as they are.
+c)Computing Resources: Circular Linked Lists is used to manage the computing resources of the computer.
+d)Fionacci Heap: Circular Linked List is also used in the implementation of advanced data structures such as a Fibonacci Heap.
+e)Computer Networking:Circular linked list is also used in computer networking for token scheduling.
+f)Implementation of Data Structure: Data structures such as stacks and queues are implemented with the help of the circular linked lists.
+g)Audio/Video Streaming: Circular linked list is also used in audio and video streaming,for ex. when one copmlete audio list finishes playing in music player then it again starts playing from start.
+
