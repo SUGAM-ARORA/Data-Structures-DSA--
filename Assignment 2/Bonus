@@ -1,5 +1,0 @@
-actually by mistake i put bonus in assignment 1
-
-In order to link the family members' doubly-linked list based on thier relationship one can use age as a criteria although it may not tell the gender.
-We can place them in descending order so that higher age people will be close to head and less age near to tail.
-Although this is not best criteria but from available information only age can be used to distinguish them .
